@@ -1,6 +1,6 @@
 <?php
 
-namespace TheFold\WordPress;
+namespace Wenprise\Dispatcher;
 
 class Router {
 
@@ -36,7 +36,7 @@ class Router {
                     }
                 }
             }
-        }, get_option('thefold/router-priority',$priority) );
+        }, get_option('wenprise/router-priority',$priority) );
 
         add_action('init', function() use ($url_callbacks) {
             static::maybe_flush_rewrites($url_callbacks);

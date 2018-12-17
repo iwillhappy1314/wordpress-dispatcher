@@ -1,11 +1,15 @@
 {
-    "name": "thefold/wordpress-dispatcher",
+    "name": "wenprise/wordpress-dispatcher",
     "description": "Create URL endpoints within WordPress",
     "license": "MIT",
     "authors": [
         {
             "name": "Tim Field",
             "email": "field.tim@gmail.com"
+        },
+        {
+            "name": "Amos Lee",
+            "email": "iwillhappy1314@gmail.com"
         }
     ],
     "require": {
@@ -13,7 +17,7 @@
     },
     "autoload": {
         "psr-4": {
-            "TheFold\\WordPress\\":"/"
+            "Wenprise\\Dispatcher\\":"/"
         }
     }
 }

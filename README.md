@@ -5,7 +5,7 @@ Easily add custom URL endpoints in WordPress. Map a url to a function.
 ##Example
 
 ```
-use \TheFold\WordPress\Router;
+use \Wenprise\Dispatcher\Router;
 
 Router::routes([
 
@@ -26,4 +26,5 @@ Router::routes([
 
 ###Composer
 
-composer require thefold/wordpress-dispatcher
+composer require wenprise/wordpress-dispatcher
+
