@@ -4,9 +4,15 @@ namespace Wenprise\Dispatcher;
 
 class Router {
 
+    /**
+     * 功能
+     *
+     * @param array $url_callbacks
+     * @param int   $priority
+     */
     static function routes(array $url_callbacks, $priority = 5) {
 
-        //Inform WordPress that these routes ( rewrites ) exist by adding to the rewrite_rules_array
+        //In form WordPress that these routes ( rewrites ) exist by adding to the rewrite_rules_array
         add_filter('rewrite_rules_array', function($rules) use ($url_callbacks) {
             return array_reduce( array_keys($url_callbacks), function($rules, $route) {
                 $newRule = ['^'.trim($route,'/').'/?$' => 'index.php?'.static::query_var_name($route).'=1'];
@@ -43,6 +49,12 @@ class Router {
         }, 99);
     }
 
+
+    /**
+     * 需要时，刷新 URL 重定向规则缓存
+     *
+     * @param $url_callbacks
+     */
     static protected function maybe_flush_rewrites($url_callbacks) {
         $current = md5(json_encode(array_keys($url_callbacks)));
         $cached = get_option(get_called_class(), null );
@@ -52,6 +64,14 @@ class Router {
         }
     }
 
+
+    /**
+     * 获取查询参数名称
+     *
+     * @param $route
+     *
+     * @return mixed
+     */
     static protected function query_var_name($route) {
         static $cache;
         if (!isset($cache[$route])) {
@@ -60,6 +80,10 @@ class Router {
         return $cache[$route];
     }
 
+
+    /**
+     * 发送 404 错误
+     */
     static protected function send_404() {
         global $wp_query;
         status_header('404');
