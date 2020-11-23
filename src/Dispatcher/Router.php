@@ -51,7 +51,7 @@ class Router
                     }
                 }
             }
-        }, get_option('wenprise/router-priority', $priority));
+        }, $priority);
 
         add_action('init', function () use ($url_callbacks)
         {
