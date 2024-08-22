@@ -41,7 +41,7 @@ class Router
             foreach ($url_callbacks as $route => $callback) {
                 if ($wp_query->get(static::query_var_name($route))) {
                     $wp_query->is_home = false;
-                    $params            = null;
+                    $params            = [];
                     preg_match('#' . trim($route, '/') . '#', $_SERVER[ 'REQUEST_URI' ], $params);
                     $res = call_user_func_array($callback, $params);
                     if ($res === false) {
